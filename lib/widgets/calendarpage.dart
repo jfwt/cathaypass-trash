@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/components/my_bottom_nav_bar.dart';
 import 'package:recipe_app/constants.dart';
 import 'package:recipe_app/models/task.dart';
 import 'package:recipe_app/widgets/datepicker.dart';
@@ -11,6 +12,7 @@ class CalendarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final detailList = task.desc;
     return Scaffold(
+      bottomNavigationBar: MyBottomNavBar(),
       backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: [
