@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:recipe_app/constants.dart';
 import 'package:recipe_app/models/NavItem.dart';
 import 'package:recipe_app/models/task.dart';
+import 'package:recipe_app/screens/covid/menu.dart';
 import 'package:recipe_app/screens/home/home_screen.dart';
 import 'package:recipe_app/widgets/calendarpage.dart';
 
@@ -63,8 +64,8 @@ class MyApp extends StatelessWidget {
           appBarTheme: AppBarTheme(iconTheme: IconThemeData(color: Colors.white), backgroundColor: AppColors.kPrimaryColor, elevation: 0),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        // home: HomeScreen(),
-        home: CalendarPage(task),
+         home: MenuScreen(),
+        //home: CalendarPage(task),
       ),
     );
   }
