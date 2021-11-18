@@ -39,7 +39,8 @@ class NavItems extends ChangeNotifier {
     NavItem(
       id: 1,
       icon: Icon(Icons.home),
-      destination: CalendarPage(Task(
+      destination: HomeScreen(),
+      /*CalendarPage(Task(
           iconData: Icon(Icons.person_rounded),
           title: 'Personal',
           bgColor: Colors.purple,
@@ -69,7 +70,7 @@ class NavItems extends ChangeNotifier {
               'tlColor': Colors.grey.withOpacity(0.3),
               'bgColor': Colors.grey.withOpacity(0.3),
             }
-          ])),
+          ])),*/
     ),
     NavItem(
       id: 2,
