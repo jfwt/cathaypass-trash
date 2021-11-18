@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/components/custom_nav_bar.dart';
 import 'package:recipe_app/components/my_bottom_nav_bar.dart';
 import 'package:recipe_app/constants.dart';
+import 'package:recipe_app/screens/subscription/carouselimage.dart';
 import 'package:recipe_app/screens/subscription/plan.dart';
 import 'package:recipe_app/widgets/notifications.dart';
 
@@ -23,137 +23,140 @@ class _SubscriptionPlansState extends State<SubscriptionPage> {
         centerTitle: true,
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.notifications_none),
-            iconSize: 28.0,
+            icon: const Icon(Icons.notifications),
             onPressed: () {
-
               showDialog(context: context, builder: (context) => NotificationsPopUp());
             },
           ),
         ],
       ),
-      body: Column(
-        children: [
-          SizedBox(height: 16,),
-          Expanded(child: Container(
-            margin: EdgeInsets.all(8),
-            child: ListView.builder(
-                itemCount: subscriptionPlanList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    margin: EdgeInsets.all(8),
-                    child: ExpansionPanelList(
-                      animationDuration: Duration(milliseconds: 1000),
-                      expandedHeaderPadding: EdgeInsets.all(0),
-                      elevation: 1,
-                      children: [
-                        ExpansionPanel(
-                            headerBuilder: (context, isExpanded) {
-                              return Container(
-                                height: 108,
-                                padding: EdgeInsets.fromLTRB(16, 12, 16, 16),
-                                decoration: BoxDecoration(
-                                    color: subscriptionPlanList[index].color,
-                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(16), bottomLeft: Radius.circular(16))
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+      body: Container(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Align(child: Text('Choose a plan', style: TextStyle(fontSize: 32),), alignment: Alignment.centerLeft,),
+            SizedBox(height: 16,),
+            CarouselImage(),
+            SizedBox(height: 16,),
+            Expanded(child: Container(
+              child: ListView.builder(
+                  itemCount: subscriptionPlanList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      margin: EdgeInsets.all(8),
+                      child: ExpansionPanelList(
+                        animationDuration: Duration(milliseconds: 1000),
+                        expandedHeaderPadding: EdgeInsets.all(0),
+                        elevation: 1,
+                        children: [
+                          ExpansionPanel(
+                              headerBuilder: (context, isExpanded) {
+                                return Container(
+                                  height: 96,
+                                  padding: EdgeInsets.fromLTRB(16, 12, 16, 16),
+                                  decoration: BoxDecoration(
+                                      color: subscriptionPlanList[index].color,
+                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(16), bottomLeft: Radius.circular(16))
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(subscriptionPlanList[index].planName,
+                                              style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.w600)),
+                                          SizedBox(
+                                            height: 8,
+                                          ),
+                                          Text(
+                                              "${r"$"}${subscriptionPlanList[index].price}/year",
+                                              style: TextStyle(fontSize: 18, color: Colors.white))
+                                        ],
+                                      ),
+                                      SizedBox(width: 16,),
+                                      subscriptionPlanList[index].selectedPlan ? Icon(Icons.star, color: Colors.white,): Text(''),
+                                    ],
+                                  )
+                                );
+                              },
+                              body: ListTile(
+                                  title: Container(
+                                    //padding: EdgeInsets.fromLTRB(8,0,8,8),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text(subscriptionPlanList[index].planName,
-                                            style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.w600)),
+                                        SizedBox(
+                                          height: 24,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Icon(Icons.airplanemode_active, size: 16,),
+                                            SizedBox(width: 16,),
+                                            Text(subscriptionPlanList[index].trips),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Icon(Icons.public, size: 16,),
+                                            SizedBox(width: 16,),
+                                            Text(subscriptionPlanList[index].destination),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Icon(Icons.hotel, size: 16,),
+                                            SizedBox(width: 16,),
+                                            Text(subscriptionPlanList[index].hotelPackage),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Icon(Icons.shield, size: 16,),
+                                            SizedBox(width: 16,),
+                                            Text(subscriptionPlanList[index].insurance),
+                                          ],
+                                        ),
                                         SizedBox(
                                           height: 8,
                                         ),
-                                        Text(
-                                            "${r"$"}${subscriptionPlanList[index].price}/year",
-                                            style: TextStyle(fontSize: 18, color: Colors.white))
+                                        Align(
+                                          child: TextButton(
+                                            onPressed: () {},
+                                            child: subscriptionPlanList[index].selectedPlan ? Text('Selected') : Container(
+                                              padding: EdgeInsets.all(8),
+                                              color: subscriptionPlanList[index].color,
+                                              child: Text('Select plan', style: TextStyle(color: Colors.white),),)),
+                                          alignment: Alignment.centerRight,),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
                                       ],
                                     ),
-                                    SizedBox(width: 16,),
-                                    subscriptionPlanList[index].selectedPlan ? Icon(Icons.star, color: Colors.white,): Text(''),
-                                  ],
-                                )
-                              );
-                            },
-                            body: ListTile(
-                                title: Container(
-                                  //padding: EdgeInsets.fromLTRB(8,0,8,8),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        height: 24,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(Icons.airplanemode_active, size: 16,),
-                                          SizedBox(width: 16,),
-                                          Text(subscriptionPlanList[index].trips),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(Icons.public, size: 16,),
-                                          SizedBox(width: 16,),
-                                          Text(subscriptionPlanList[index].destination),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(Icons.hotel, size: 16,),
-                                          SizedBox(width: 16,),
-                                          Text(subscriptionPlanList[index].hotelPackage),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(Icons.shield, size: 16,),
-                                          SizedBox(width: 16,),
-                                          Text(subscriptionPlanList[index].insurance),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 8,
-                                      ),
-                                      Align(
-                                        child: TextButton(
-                                          onPressed: () {},
-                                          child: subscriptionPlanList[index].selectedPlan ? Text('Selected') : Container(
-                                            padding: EdgeInsets.all(8),
-                                            color: subscriptionPlanList[index].color,
-                                            child: Text('Select plan', style: TextStyle(color: Colors.white),),)),
-                                        alignment: Alignment.centerRight,),
-                                      SizedBox(
-                                        height: 8,
-                                      ),
-                                    ],
                                   ),
-                                ),
-                                subtitle: TextButton(
-                                  child: Text("View details"),
-                                  onPressed: () {},
-                                )),
-                            isExpanded: subscriptionPlanList[index].expanded,
-                            canTapOnHeader: true)
-                      ],
-                      expansionCallback: (panelIndex, isExpanded) {
-                        setState(() {
-                          subscriptionPlanList[index].expanded =
-                          !subscriptionPlanList[index].expanded;
-                        });
-                      },
-                    ),
-                  );
-                }),
-          ),)
-        ],
+                                  subtitle: TextButton(
+                                    child: Text("View details"),
+                                    onPressed: () {},
+                                  )),
+                              isExpanded: subscriptionPlanList[index].expanded,
+                              canTapOnHeader: true,
+                          )
+                        ],
+                        expansionCallback: (panelIndex, isExpanded) {
+                          setState(() {
+                            subscriptionPlanList[index].expanded =
+                            !subscriptionPlanList[index].expanded;
+                          });
+                        },
+                      ),
+                    );
+                  }),
+            ),)
+          ],
+        ),
       ),
-      bottomNavigationBar: MyBottomNavBar(),
     );
   }
 
