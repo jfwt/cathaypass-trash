@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/models/task.dart';
 import 'package:recipe_app/screens/booking/hotel.dart';
 import 'package:recipe_app/screens/booking/flight.dart';
 import 'package:recipe_app/screens/covid/menu.dart';
 import 'package:recipe_app/screens/home/home_screen.dart';
 import 'package:recipe_app/screens/profile/prrofile_screen.dart';
 import 'package:recipe_app/screens/subscription/subscriptionpage.dart';
-import 'package:recipe_app/widgets/calendarpage.dart';
 
 class NavItem {
   final int id;
@@ -39,7 +37,9 @@ class NavItems extends ChangeNotifier {
     NavItem(
       id: 1,
       icon: Icon(Icons.home),
-      destination: CalendarPage(Task(
+      destination: HomeScreen(),
+<<<<<<< HEAD
+      /*CalendarPage(Task(
           iconData: Icon(Icons.person_rounded),
           title: 'Personal',
           bgColor: Colors.purple,
@@ -69,7 +69,9 @@ class NavItems extends ChangeNotifier {
               'tlColor': Colors.grey.withOpacity(0.3),
               'bgColor': Colors.grey.withOpacity(0.3),
             }
-          ])),
+          ])),*/
+=======
+>>>>>>> parent of 635e0e8 (calendar page bottom nav)
     ),
     NavItem(
       id: 2,

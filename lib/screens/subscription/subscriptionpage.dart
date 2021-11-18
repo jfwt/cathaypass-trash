@@ -16,7 +16,7 @@ class _SubscriptionPlansState extends State<SubscriptionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         backgroundColor: AppColors.kPrimaryColor,
         elevation: 0.0,
         title: Text('Subscription', style: TextStyle(fontWeight: FontWeight.w500),),
@@ -29,7 +29,7 @@ class _SubscriptionPlansState extends State<SubscriptionPage> {
             },
           ),
         ],
-      ),
+      ),*/
       body: Container(
         padding: EdgeInsets.all(16),
         child: Column(
