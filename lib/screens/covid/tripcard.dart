@@ -28,7 +28,7 @@ class _TripCardState extends State<TripCard> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             image: DecorationImage(
-              image: AssetImage('assets/images/${widget._destination.toLowerCase().split(' ').first}.jpg'),
+              image: AssetImage('assets/images/tokyo.jpg'),
               fit: BoxFit.cover,
               colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.dstATop),
             )
