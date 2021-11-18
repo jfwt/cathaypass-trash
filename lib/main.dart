@@ -16,9 +16,8 @@ class MyApp extends StatelessWidget {
       create: (context) => NavItems(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flightastic App',
+        title: 'Cathay Pass',
         theme: ThemeData(
-          // backgroundColor: Colors.white,
           scaffoldBackgroundColor: Colors.white,
           primarySwatch: AppColors.primarySwatch,
           fontFamily: 'OpenSans',

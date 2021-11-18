@@ -8,7 +8,7 @@ import 'package:recipe_app/screens/subscription/subscriptionpage.dart';
 
 class NavItem {
   final int id;
-  final String icon;
+  final Icon icon;
   final Widget destination;
 
   NavItem({this.id, this.icon, this.destination});
@@ -36,22 +36,17 @@ class NavItems extends ChangeNotifier {
   List<NavItem> items = [
     NavItem(
       id: 1,
-      icon: "assets/icons/home.svg",
+      icon: Icon(Icons.home),
       destination: HomeScreen(),
     ),
     NavItem(
       id: 2,
-      icon: "assets/icons/list.svg",
+      icon: Icon(Icons.travel_explore),
       destination: MenuScreen(),
     ),
     NavItem(
-      id: 3,
-      icon: "assets/icons/camera.svg",
-      destination: BookScreen(),
-    ),
-    NavItem(
       id: 4,
-      icon: "assets/icons/user.svg",
+      icon: Icon(Icons.account_circle),
       destination: ProfileScreen(),
     ),
   ];
